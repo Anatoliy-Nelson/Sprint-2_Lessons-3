@@ -23,7 +23,7 @@ export type UserType = {
     name: string // need to fix any
 }
 
-export const pureAddUserCallback = (
+/*export const pureAddUserCallback = (
     name: string,
     setUsers: React.Dispatch<React.SetStateAction<UserType[]>>,
     users: UserType[]
@@ -33,6 +33,18 @@ export const pureAddUserCallback = (
         name: name.trim(),// need to fix
     }
     setUsers([...users, user])
+}*/
+export const pureAddUserCallback = (
+    name: string,
+    setUsers: ((users: UserType[]) => void),
+    users: UserType[]
+) => {
+    const user: UserType = {
+        _id: v1(),
+        name: name.trim(),
+    }
+    setUsers([...users, user])
+
 }
 
 const HW3 = () => {
